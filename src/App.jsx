@@ -1,29 +1,25 @@
 import faceImage from "./assets/placeholder-face.jpg";
+import NavbarComponent from "./components/NavbarComponent";
+import ExperienceCardComponent from "./components/ExperienceCardComponent";
+import BluePillButtonComponent from "./components/BluePillButtonComponent";
+import ContactCardComponent from "./components/ContactCardComponent";
+import { MdOutlineLocalPhone } from "react-icons/md";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaInstagram } from "react-icons/fa";
 
 export default function App() {
   return (
+    // header nav
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans scroll-smooth">
       <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md shadow-md border-b border-slate-800">
         <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-black tracking-tighter">
-            <span className="text-blue-400">S.F</span>elix
-          </div>
-          <ul className="flex space-x-8 text-sm font-medium">
-            <li>
-              <a href="#home" className="hover:text-indigo-400 transition-colors uppercase tracking-widest px-2 py-1">Home</a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-indigo-400 transition-colors uppercase tracking-widest px-2 py-1">About</a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-indigo-400 transition-colors uppercase tracking-widest px-2 py-1">Contact</a>
-            </li>
-          </ul>
+          <NavbarComponent />
         </nav>
       </header>
 
+      {/* main: about */}
       <main>
-        <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-6 pb-20">
+        <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-6 py-10">
           <img
             src={faceImage}
             alt="Profile"
@@ -35,12 +31,7 @@ export default function App() {
           <p className="text-xl text-slate-300 max-w-2xl leading-relaxed mb-10">
             An aspiring student in Computer Science to develop stuff as a hobby! and what you're seeing now, is one of my humble projects! 😊
           </p>
-          <a
-            href="#about"
-            className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold transition-all transform hover:scale-105 shadow-xl shadow-blue-500/20"
-          >
-            See More!
-          </a>
+          <BluePillButtonComponent text="See More!" href="#about" />
         </section>
 
         <section id="about" className="min-h-screen flex flex-col justify-center bg-slate-900 px-6 py-20">
@@ -58,44 +49,75 @@ export default function App() {
                 I am a passionate software developer with a focus on creating intuitive and visually stunning user interfaces. With 5 years of experience in the industry, I've worked with various startups and brands to bring their digital visions to life.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-slate-800 rounded-xl hover:bg-slate-700 duration-300 hover:scale-105 transition-all">
-                  <h3 className="font-bold text-blue-400 mb-1">Frontend</h3>
-                  <p className="text-sm text-slate-400">React, Tailwind, NextJS</p>
-                </div>
-                <div className="p-4 bg-slate-800 rounded-xl hover:bg-slate-700 duration-300 hover:scale-105 transition-all">
-                  <h3 className="font-bold text-blue-400 mb-1">Backend</h3>
-                  <p className="text-sm text-slate-400">NodeJS, MongoDB, PostgreSQL</p>
-                </div>
+                <ExperienceCardComponent
+                  title="Frontend"
+                  skills="React, Tailwind, NextJS"
+                />
+                <ExperienceCardComponent
+                  title="Backend"
+                  skills="NodeJS, MongoDB, PostgreSQL"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="min-h-[20vh] flex flex-col justify-center items-center px-6 py-10 text-center">
-          <div className="max-w-3xl w-full">
-            <h2 className="text-4xl font-black mb-6">Get In Touch</h2>
-            <p className="text-lg text-slate-400 mb-12">
-              Have a project in mind? Let's build something amazing together.
+        {/* main: contact */}
+        <section id="contact" className="min-h-screen flex flex-col justify-center items-center px-6 py-20 bg-slate-950 relative overflow-hidden">
+          {/* Background Accents for Premium Look */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] -z-10 animate-pulse delay-700"></div>
+
+          <div className="max-w-6xl w-full text-center relative z-10">
+            <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+              Get In <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">Touch</span>
+            </h2>
+            <p className="text-xl text-slate-400 mb-16 max-w-2xl mx-auto">
+              Have a project in mind or just want to say hi? I'm always open to new opportunities and interesting conversations.
             </p>
-            <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-12">
-              <a href="mailto:hello@example.com" className="text-xl font-bold hover:text-indigo-400 transition-colors">
-                hello@example.com
-              </a>
-              <a href="#" className="text-xl font-bold hover:text-indigo-400 transition-colors">
-                LinkedIn
-              </a>
-              <a href="#" className="text-xl font-bold hover:text-indigo-400 transition-colors">
-                GitHub
-              </a>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <ContactCardComponent
+                title="Phone"
+                content="+62 0813-8312-842#"
+                icon={<MdOutlineLocalPhone />}
+                >
+                <BluePillButtonComponent
+                  text="Copy Number"
+                  border
+                />
+              </ContactCardComponent>
+
+              <ContactCardComponent
+                title="Email"
+                content="FelixChessGuy@gmail.com"
+                icon={<MdOutlineEmail />}
+              >
+                <BluePillButtonComponent
+                  text="Send Email!"
+                />
+              </ContactCardComponent>
+
+              <ContactCardComponent
+                title="Instagram"
+                content="my account: @felixetc_"
+                icon={<FaInstagram />}
+              >
+                <BluePillButtonComponent
+                  text="Follow Me!"
+                  href="https://instagram.com/felixetc_"
+                  border
+                />
+              </ContactCardComponent>
+
             </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-slate-800 px-6 py-8 bg-slate-950">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center opacity-50 text-sm">
-          <div>© 2026 Portfolio. Built with React.</div>
+          <div>© 2026 Portfolio. Built with love.</div>
           <div className="mt-4 md:mt-0 text-slate-400">Samuel Felix</div>
         </div>
       </footer>
