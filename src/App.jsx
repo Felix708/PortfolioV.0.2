@@ -63,7 +63,7 @@ export default function App() {
 
         <div className="max-w-6xl w-full text-center relative z-10">
           <h2 className="text-5xl md:text-7xl font-black mb-6 tracking-tight">
-            Get In <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-500">Touch</span>
+            Get In <span className=" bg-clip-text text-blue-400">Touch</span>
           </h2>
           <p className="text-xl text-slate-400 mb-16 max-w-2xl mx-auto">
             Have a project in mind or just want to say hi? I'm always open to new opportunities and interesting conversations.
@@ -83,7 +83,7 @@ export default function App() {
 
             <ContactCardComponent
               title="Email"
-              content="FelixChessGuy@gmail.com"
+              content="Samuelfs561@gmail.com"
               icon={<MdOutlineEmail />}
             >
               <BluePillButtonComponent
